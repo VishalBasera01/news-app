@@ -1,40 +1,35 @@
+// newsAction.js
 export const FETCH_NEWS = "FETCH_NEWS";
 export const FETCH_NEWS_SUCCESS = "FETCH_NEWS_SUCCESS";
 export const FETCH_NEWS_FAILURE = "FETCH_NEWS_FAILURE";
 
 export const fetchNewsRequest = () => {
-  return {
-    type: FETCH_NEWS,
-  };
+  return { type: FETCH_NEWS };
 };
+
 export const fetchNewsRequestSuccess = (news) => {
-  return {
-    type: FETCH_NEWS_SUCCESS,
-    payload: news,
-  };
+  return { type: FETCH_NEWS_SUCCESS, payload: news };
 };
+
 export const fetchNewsRequestFailure = (error) => {
-  return {
-    type: FETCH_NEWS,
-    payload: error,
-  };
+  return { type: FETCH_NEWS_FAILURE, payload: error };
 };
-export const fetchNews = () => {
+
+export const fetchNews = (category) => {
   return (dispatch) => {
     dispatch(fetchNewsRequest());
     fetch(
-      "https://gnews.io/api/v4/search?q=example&lang=en&country=in&max=10&apikey=196b80398f7c6c116cd467a799037833"
+      `https://gnews.io/api/v4/top-headlines?country=${category}&category=general&apikey=6ee9bfa1deb4a23feb35cca332a96772`
     )
       .then((res) => res.json())
       .then((response) => {
-        const news = response.articles.map((article) => {
-          return {
-            title: article.title,
-            url: article.url,
-            description: article.description,
-            image: article.image,
-          };
-        });
+        console.log(response);
+        const news = response.articles.map((article) => ({
+          title: article.title,
+          url: article.url,
+          description: article.description,
+          image: article.image,
+        }));
         dispatch(fetchNewsRequestSuccess(news));
       })
       .catch((error) => {
