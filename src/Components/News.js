@@ -18,11 +18,9 @@ const News = ({ category }) => {
           <div className="text-center text-xl text-gray-600">Loading...</div>
         )}
         {error && <div className="text-center text-red-500">{error}</div>}
-
-        {/* Display one news article at a time */}
-        <div className="flex flex-col space-y-8">
+        <ul className="flex flex-col space-y-8">
           {news.map((article, index) => (
-            <div
+            <li
               key={index}
               className="bg-white p-6 rounded-lg shadow-xl transition-transform duration-300 ease-in-out transform hover:scale-105 w-full"
             >
@@ -30,11 +28,10 @@ const News = ({ category }) => {
                 href={article.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-2xl font-bold text-blue-600 hover:underline"
+                className="text-xl font-bold text-blue-600 hover:underline"
               >
                 {article.title}
               </a>
-              {/* Image Container */}
               <div className="mt-4 w-full h-auto overflow-hidden rounded-md border-2 border-gray-200">
                 <img
                   src={article.image}
@@ -42,7 +39,6 @@ const News = ({ category }) => {
                   className="w-full h-auto object-contain transition-opacity duration-300 hover:opacity-90"
                 />
               </div>
-              {/* Article Description */}
               <p className="mt-4 text-gray-800">{article.description}</p>
               <a
                 href={article.url}
@@ -52,9 +48,9 @@ const News = ({ category }) => {
               >
                 Click here to see full story
               </a>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );

@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div>
-      <h1 className="text-5xl font-bold text-white text-center mb-4">
+    <div className="bg-blue-300">
+      <h1 className="text-5xl font-bold bg-blue-300 text-black text-center mb-4">
         News App
       </h1>
-      <div className="bg-blue-100 p-4 shadow-md">
-        <nav className="flex justify-center space-x-4">
+      <div className="bg-blue-300 p-4 shadow-md">
+        <nav className="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4">
           <NavLink
             to="/"
             className={({ isActive }) =>
