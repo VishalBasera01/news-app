@@ -8,7 +8,7 @@ const Navbar = () => {
       <h1 className="text-5xl font-bold text-white text-center mb-4">
         News App
       </h1>
-      <div className="bg-blue-600 p-4 shadow-md">
+      <div className="bg-blue-100 p-4 shadow-md">
         <nav className="flex justify-center space-x-4">
           <NavLink
             to="/"
